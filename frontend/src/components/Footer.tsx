@@ -7,6 +7,7 @@ const Footer = () => {
       bg="transparent"
       color="inherit"
       py={6}
+      pb={{ base: 16, md: 6 }}
       mt="auto"
       borderTopWidth="1px"
       borderColor="gray.200"

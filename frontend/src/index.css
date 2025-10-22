@@ -30,3 +30,8 @@ button { font-family: inherit; }
 
 /* Smooth scrolling for logo click and in-page anchors */
 html { scroll-behavior: smooth; }
+
+/* Reserve space for the mobile bottom nav so content isn't hidden */
+@media (max-width: 48em) { /* Chakra md breakpoint */
+  body { padding-bottom: 64px; }
+}

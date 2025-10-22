@@ -1,6 +1,7 @@
 import { Box, Flex, Link, Button, Container, IconButton, Image } from "@chakra-ui/react"
 import { useColorMode } from "@/components/ui/color-mode"
 import { FiSun, FiMoon } from "react-icons/fi"
+import BottomNav from "./BottomNav"
 
 const Navigation = () => {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -38,11 +39,12 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Navigation Links */}
+          {/* Navigation Links (hidden on mobile) */}
           <Flex gap={6} align="center">
             <Link 
               href="/" 
               color="#3E9A42" 
+              display={{ base: "none", md: "inline-flex" }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
               _dark={{ color: "#3E9A42" }}
             >
@@ -50,7 +52,8 @@ const Navigation = () => {
             </Link>
             <Link 
               href="/catalog" 
-              color="#3E9A42" 
+              color="#3E9A42"
+              display={{ base: "none", md: "inline-flex" }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
               _dark={{ color: "#3E9A42" }}
             >
@@ -59,6 +62,7 @@ const Navigation = () => {
             <Link 
               href="/about" 
               color="#3E9A42" 
+              display={{ base: "none", md: "inline-flex" }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
               _dark={{ color: "#3E9A42" }}
             >
@@ -67,6 +71,7 @@ const Navigation = () => {
             <Link 
               href="/contact" 
               color="#3E9A42" 
+              display={{ base: "none", md: "inline-flex" }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
               _dark={{ color: "#3E9A42" }}
             >
@@ -79,10 +84,12 @@ const Navigation = () => {
               onClick={toggleColorMode}
               variant="ghost"
               color="gray.600"
-              _hover={{ bg: "gray.100" }}
+              _hover={{ bg: "transparent" }}
+              _active={{ bg: "transparent" }}
               _dark={{ 
                 color: "#E0E0E0", 
-                _hover: { bg: "whiteAlpha.200" } 
+                _hover: { bg: "transparent" },
+                _active: { bg: "transparent" }
               }}
             >
               {colorMode === "light" ? <FiMoon /> : <FiSun />}
@@ -95,6 +102,7 @@ const Navigation = () => {
               fontFamily="accent"
               fontWeight="semibold"
               _hover={{ bg: "#B8440F" }}
+              display={{ base: "none", md: "inline-flex" }}
               _dark={{ 
                 bg: "#D35400", 
                 _hover: { bg: "#E55100" } 
@@ -105,6 +113,8 @@ const Navigation = () => {
           </Flex>
         </Flex>
       </Container>
+      {/* Mobile app-style bottom navigation */}
+      <BottomNav />
     </Box>
   )
 }
