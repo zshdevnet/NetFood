@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Link,
   Button,
   Container,
   IconButton,
@@ -9,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
 import { FiSun, FiMoon, FiShoppingCart } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link as RouterLink } from "react-router-dom";
 import BottomNav from "./BottomNav";
 
 const Navigation = () => {
@@ -21,6 +20,19 @@ const Navigation = () => {
     if (href === "/") return path === "/";
     return path.startsWith(href);
   };
+
+  const linkStyle = (path: string) => ({
+    color: isActive(path)
+      ? "#D35400"
+      : colorMode === "light"
+      ? "#3E9A42"
+      : "white",
+    fontSize: "1.125rem",
+    fontWeight: "600",
+    padding: "8px",
+    textDecoration: "none",
+    display: "inline-flex",
+  });
 
   return (
     <Box
@@ -37,15 +49,13 @@ const Navigation = () => {
       <Container maxW="1450px" px={{ base: 4, md: 0 }}>
         <Flex justify="space-between" align="center">
           {/* Logo/Brand */}
-          <Link
-            href="/"
-            display="flex"
-            alignItems="center"
-            _hover={{ textDecoration: "none" }}
-            _active={{ transform: "scale(0.98)" }}
-            _focus={{ boxShadow: "none", outline: "none" }}
-            _focusVisible={{ boxShadow: "none", outline: "none" }}
-            transition="transform 0.12s ease-out"
+          <RouterLink
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              textDecoration: "none",
+            }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <Image
@@ -57,113 +67,40 @@ const Navigation = () => {
               _hover={{ opacity: 0.9 }}
               transition="opacity 0.2s"
             />
-          </Link>
+          </RouterLink>
 
           {/* Navigation Links (hidden on mobile) */}
           <Flex gap={8} align="center">
-            <Link
-              href="/catalog"
-              color={
-                isActive("/catalog")
-                  ? "#D35400"
-                  : colorMode === "light"
-                  ? "#3E9A42"
-                  : "white"
-              }
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={{ md: "lg" }}
-              fontWeight="semibold"
-              px={{ md: 2 }}
-              py={{ md: 2 }}
-              _hover={{ textDecoration: "none", color: "#2D7A32" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
-              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
+            <Box
+              display={{ base: "none", md: "flex" }}
+              gap={6}
+              alignItems="center"
             >
-              Catalog
-            </Link>
-            <Link
-              href="/about"
-              color={
-                isActive("/about")
-                  ? "#D35400"
-                  : colorMode === "light"
-                  ? "#3E9A42"
-                  : "white"
-              }
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={{ md: "lg" }}
-              fontWeight="semibold"
-              px={{ md: 2 }}
-              py={{ md: 2 }}
-              _hover={{ textDecoration: "none", color: "#2D7A32" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
-              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/careers"
-              color={
-                isActive("/careers")
-                  ? "#D35400"
-                  : colorMode === "light"
-                  ? "#3E9A42"
-                  : "white"
-              }
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={{ md: "lg" }}
-              fontWeight="semibold"
-              px={{ md: 2 }}
-              py={{ md: 2 }}
-              _hover={{ textDecoration: "none", color: "#2D7A32" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
-              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
-            >
-              Careers
-            </Link>
-            <Link
-              href="/contact"
-              color={
-                isActive("/contact")
-                  ? "#D35400"
-                  : colorMode === "light"
-                  ? "#3E9A42"
-                  : "white"
-              }
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={{ md: "lg" }}
-              fontWeight="semibold"
-              px={{ md: 2 }}
-              py={{ md: 2 }}
-              _hover={{ textDecoration: "none", color: "#2D7A32" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
-              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
-            >
-              Contact Us
-            </Link>
+              <RouterLink to="/catalog" style={linkStyle("/catalog")}>
+                Catalog
+              </RouterLink>
+              <RouterLink to="/about" style={linkStyle("/about")}>
+                About Us
+              </RouterLink>
+              <RouterLink to="/careers" style={linkStyle("/careers")}>
+                Careers
+              </RouterLink>
+              <RouterLink to="/contact" style={linkStyle("/contact")}>
+                Contact Us
+              </RouterLink>
+            </Box>
 
-            {/* Cart and Color Mode Icons with smaller gap */}
+            {/* Cart and Color Mode Icons */}
             <Flex gap={2} align="center">
               {/* Cart Icon */}
-              <Link
-                href="/cart"
-                display={{ base: "none", md: "inline-flex" }}
-                _hover={{ textDecoration: "none" }}
-                _focus={{ boxShadow: "none", outline: "none" }}
-                _focusVisible={{ boxShadow: "none", outline: "none" }}
-              >
+              <RouterLink to="/cart" style={{ textDecoration: "none" }}>
                 <IconButton
                   aria-label="Shopping cart"
                   variant="ghost"
                   color="gray.600"
+                  display={{ base: "none", md: "inline-flex" }}
                   _hover={{ bg: "transparent", color: "#D35400" }}
                   _active={{ bg: "transparent" }}
-                  _focus={{ boxShadow: "none", outline: "none" }}
-                  _focusVisible={{ boxShadow: "none", outline: "none" }}
                   _dark={{
                     color: "#E0E0E0",
                     _hover: { bg: "transparent", color: "#D35400" },
@@ -172,7 +109,7 @@ const Navigation = () => {
                 >
                   <FiShoppingCart />
                 </IconButton>
-              </Link>
+              </RouterLink>
 
               {/* Color Mode Switcher */}
               <IconButton
@@ -182,8 +119,6 @@ const Navigation = () => {
                 color="gray.600"
                 _hover={{ bg: "transparent", color: "#D35400" }}
                 _active={{ bg: "transparent" }}
-                _focus={{ boxShadow: "none", outline: "none" }}
-                _focusVisible={{ boxShadow: "none", outline: "none" }}
                 _dark={{
                   color: "#E0E0E0",
                   _hover: { bg: "transparent", color: "#D35400" },
@@ -194,12 +129,12 @@ const Navigation = () => {
               </IconButton>
             </Flex>
 
-            <Link
-              href="/account"
-              display={{ base: "none", md: "inline-flex" }}
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
+            <RouterLink
+              to="/account"
+              style={{
+                textDecoration: "none",
+                display: window.innerWidth >= 768 ? "inline-flex" : "none",
+              }}
             >
               <Button
                 bg="#D35400"
@@ -215,7 +150,7 @@ const Navigation = () => {
               >
                 Account
               </Button>
-            </Link>
+            </RouterLink>
           </Flex>
         </Flex>
       </Container>

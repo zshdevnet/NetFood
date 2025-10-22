@@ -1,12 +1,5 @@
-import {
-  Box,
-  VStack,
-  Link,
-  Text,
-  IconButton,
-  Flex,
-  Image,
-} from "@chakra-ui/react";
+import { Box, VStack, Text, IconButton, Flex, Image } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { useColorMode } from "@/components/ui/color-mode";
 import { FiGrid, FiUsers, FiBriefcase, FiMail, FiX } from "react-icons/fi";
 
@@ -31,19 +24,11 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
     return window.location.pathname.startsWith(href);
   };
 
-  const handleLogoClick = () => {
-    // Close the menu
-    onClose();
-    // Navigate to home and scroll to top
-    window.location.href = "/";
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 100);
-  };
+  if (!isOpen) return null;
 
   return (
     <>
-      {/* Overlay */}
+      {/* Backdrop */}
       <Box
         position="fixed"
         top={0}
@@ -51,11 +36,9 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
         right={0}
         bottom={0}
         bg="blackAlpha.600"
-        zIndex={1500}
-        opacity={isOpen ? 1 : 0}
-        visibility={isOpen ? "visible" : "hidden"}
-        transition="opacity 0.3s ease, visibility 0.3s ease"
+        zIndex={1999}
         onClick={onClose}
+        display={{ base: "block", md: "none" }}
       />
 
       {/* Drawer */}
@@ -63,48 +46,47 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
         position="fixed"
         top={0}
         left={0}
-        bottom={0}
-        width="280px"
+        h="100vh"
+        w="280px"
         bg="white"
-        zIndex={1600}
-        boxShadow="xl"
+        zIndex={2000}
+        display={{ base: "block", md: "none" }}
         transform={isOpen ? "translateX(0)" : "translateX(-100%)"}
-        transition="transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-        _dark={{ bg: "#121212" }}
+        transition="transform 0.3s ease"
+        overflowY="auto"
+        boxShadow="xl"
+        _dark={{ bg: "#1a1a1a" }}
       >
         {/* Header */}
         <Flex
-          align="center"
           justify="space-between"
-          px={6}
-          py={4}
+          align="center"
+          p={6}
           borderBottomWidth="1px"
           borderColor="gray.200"
           _dark={{ borderColor: "whiteAlpha.300" }}
         >
-          <Box
-            cursor="pointer"
-            onClick={handleLogoClick}
-            _hover={{ opacity: 0.8 }}
-            transition="opacity 0.2s"
-          >
+          <RouterLink to="/" onClick={onClose}>
             <Image
               src="/logos/netfood.webp"
               alt="NetFood Logo"
-              height="80px"
+              height="48px"
               width="auto"
             />
-          </Box>
+          </RouterLink>
+
           <IconButton
             aria-label="Close menu"
             onClick={onClose}
             variant="ghost"
-            size="sm"
             color="gray.600"
-            _dark={{ color: "#E0E0E0" }}
-            _hover={{ color: "#D35400" }}
+            _hover={{ bg: "gray.100" }}
+            _dark={{
+              color: "#E0E0E0",
+              _hover: { bg: "whiteAlpha.100" },
+            }}
           >
-            <FiX />
+            <FiX size={20} />
           </IconButton>
         </Flex>
 
@@ -115,53 +97,37 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
             const active = isActive(item.href);
             const activeColor = colorMode === "light" ? "#3E9A42" : "#D35400";
             const defaultColor = colorMode === "light" ? "gray.700" : "#E0E0E0";
+            const activeBg = colorMode === "light" ? "#E8F5E8" : "#2D1B10";
 
             return (
-              <Link
+              <RouterLink
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 onClick={onClose}
-                display="flex"
-                alignItems="center"
-                gap={3}
-                px={6}
-                py={4}
-                color={active ? activeColor : defaultColor}
-                bg={
-                  active
-                    ? colorMode === "light"
-                      ? "green.50"
-                      : "orange.900"
-                    : "transparent"
-                }
-                _hover={{
-                  bg: colorMode === "light" ? "gray.50" : "whiteAlpha.100",
-                  color: colorMode === "light" ? "#3E9A42" : "#D35400",
-                  textDecoration: "none",
-                }}
-                _active={{
-                  bg: colorMode === "light" ? "gray.100" : "whiteAlpha.200",
-                }}
-                transition="all 0.2s ease"
-                borderBottomWidth="1px"
-                borderColor="gray.100"
-                _last={{ borderBottom: "none" }}
-                _dark={{
-                  borderColor: "whiteAlpha.100",
-                }}
-                opacity={isOpen ? 1 : 0}
-                transform={isOpen ? "translateX(0)" : "translateX(-20px)"}
-                transitionDelay={isOpen ? `${index * 0.05}s` : "0s"}
                 style={{
-                  transition:
-                    "opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease, color 0.2s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  padding: "16px 24px",
+                  color: active ? activeColor : defaultColor,
+                  backgroundColor: active ? activeBg : "transparent",
+                  textDecoration: "none",
+                  borderBottom: "1px solid",
+                  borderColor:
+                    colorMode === "light"
+                      ? "#E2E8F0"
+                      : "rgba(255, 255, 255, 0.1)",
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? "translateX(0)" : "translateX(-20px)",
+                  transition: "all 0.3s ease",
+                  transitionDelay: `${index * 0.05}s`,
                 }}
               >
                 <Icon size={20} />
                 <Text fontSize="md" fontWeight={active ? "semibold" : "medium"}>
                   {item.label}
                 </Text>
-              </Link>
+              </RouterLink>
             );
           })}
         </VStack>

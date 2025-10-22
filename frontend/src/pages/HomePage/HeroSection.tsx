@@ -108,10 +108,8 @@ const HeroSection = () => {
       if (!isHovered) return; // Only when hovering over slider
 
       if (e.key === "ArrowLeft") {
-        console.log("Left arrow - Previous slide");
         prevSlide();
       } else if (e.key === "ArrowRight") {
-        console.log("Right arrow - Next slide");
         nextSlide();
       }
     };
@@ -132,21 +130,15 @@ const HeroSection = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  // Mouse wheel navigation
+  // Mouse wheel navigation - Remove preventDefault to avoid passive listener warning
   const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault(); // Prevent page scroll
-
     if (isScrolling) return;
 
     setIsScrolling(true);
 
-    console.log(`Wheel deltaY: ${e.deltaY}`); // Debug log
-
     if (e.deltaY > 0) {
-      console.log("Wheel down - Next slide");
       nextSlide();
     } else if (e.deltaY < 0) {
-      console.log("Wheel up - Previous slide");
       prevSlide();
     }
 
@@ -164,12 +156,8 @@ const HeroSection = () => {
   const handleTouchMove = (e: React.TouchEvent) => {
     const touchDown = e.touches[0].clientX;
     setTouchEnd(touchDown);
-
-    // Prevent default scrolling behavior during horizontal swipe
-    const horizontalDistance = Math.abs(touchDown - touchStart);
-    if (horizontalDistance > 10) {
-      e.preventDefault();
-    }
+    // Note: Removed preventDefault to avoid passive listener warnings
+    // CSS touch-action property handles scroll prevention instead
   };
 
   const handleTouchEnd = () => {
@@ -179,15 +167,9 @@ const HeroSection = () => {
     const isLeftSwipe = distance > 50; // Swipe left = next slide
     const isRightSwipe = distance < -50; // Swipe right = previous slide
 
-    console.log(
-      `Touch - Start: ${touchStart}, End: ${touchEnd}, Distance: ${distance}`
-    );
-
     if (isLeftSwipe) {
-      console.log("Left swipe detected - Next slide");
       nextSlide();
     } else if (isRightSwipe) {
-      console.log("Right swipe detected - Previous slide");
       prevSlide();
     }
 

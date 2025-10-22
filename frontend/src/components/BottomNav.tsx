@@ -1,7 +1,8 @@
-import { Box, Flex, Link, Text, IconButton } from "@chakra-ui/react";
+import { Box, Flex, Text, IconButton } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
 import { FiGrid, FiShoppingCart, FiMenu, FiUser } from "react-icons/fi";
 import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import MobileMenuDrawer from "./MobileMenuDrawer";
 import type { ReactElement } from "react";
 
@@ -98,25 +99,25 @@ const BottomNav = () => {
             }
 
             return (
-              <Link
+              <RouterLink
                 key={item.href}
-                href={item.href}
-                display="flex"
-                alignItems="center"
-                flexDirection="column"
-                flex="1"
-                minW={0}
-                textAlign="center"
-                gap={1}
-                color={color}
-                _hover={{ color: "#D35400", textDecoration: "none" }}
-                _active={{ color: "#D35400" }}
-                _focus={{ boxShadow: "none", outline: "none" }}
-                _focusVisible={{ boxShadow: "none", outline: "none" }}
+                to={item.href!}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  flex: "1",
+                  minWidth: 0,
+                  textAlign: "center",
+                  color: color,
+                  textDecoration: "none",
+                  gap: "4px",
+                  padding: "8px 0",
+                }}
               >
                 {item.icon({ size: 22 })}
                 <Text fontSize="xs">{item.label}</Text>
-              </Link>
+              </RouterLink>
             );
           })}
         </Flex>
