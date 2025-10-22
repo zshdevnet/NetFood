@@ -2,18 +2,18 @@ import { Box, Text } from "@chakra-ui/react"
 import Navigation from "../../components/Navigation"
 import Footer from "../../components/Footer"
 
-const ContactUsPage = () => {
+const AboutUsPage = () => {
   return (
     <Box 
       minH="100vh" 
       display="flex" 
       flexDirection="column"
-  bg="white"
+      bg="white"
       _dark={{ bg: "#121212" }}
     >
       <Navigation />
       
-  <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
+      <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
         <Text 
           fontSize="5xl" 
           textAlign="center"
@@ -24,7 +24,7 @@ const ContactUsPage = () => {
           letterSpacing="tight"
           mb={6}
         >
-          Hello, this is ContactUsPage
+          Hello, this is AboutUsPage
         </Text>
         
         <Text 
@@ -36,7 +36,7 @@ const ContactUsPage = () => {
           maxW="5xl"
           mx="auto"
         >
-          Get in touch with our wholesale team
+          Learn about NetFood's history and mission
         </Text>
       </Box>
       
@@ -45,4 +45,4 @@ const ContactUsPage = () => {
   )
 }
 
-export default ContactUsPage
+export default AboutUsPage

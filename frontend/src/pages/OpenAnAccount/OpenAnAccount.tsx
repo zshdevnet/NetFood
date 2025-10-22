@@ -8,12 +8,12 @@ const OpenAnAccount = () => {
       minH="100vh" 
       display="flex" 
       flexDirection="column"
-  bg="white"
+      bg="white"
       _dark={{ bg: "#121212" }}
     >
       <Navigation />
       
-  <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
+      <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
         <Text 
           fontSize="5xl" 
           textAlign="center"

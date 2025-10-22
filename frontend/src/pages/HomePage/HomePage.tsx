@@ -2,18 +2,19 @@ import { Box, Text } from "@chakra-ui/react"
 import Navigation from "../../components/Navigation"
 import Footer from "../../components/Footer"
 
-const AboutUsPage = () => {
+const HomePage = () => {
   return (
     <Box 
       minH="100vh" 
       display="flex" 
       flexDirection="column"
-  bg="white"
+      bg="white"
       _dark={{ bg: "#121212" }}
     >
       <Navigation />
       
-  <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
+      {/* Full-width content without container constraints */}
+      <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
         <Text 
           fontSize="5xl" 
           textAlign="center"
@@ -22,9 +23,10 @@ const AboutUsPage = () => {
           fontFamily="heading"
           fontWeight="bold"
           letterSpacing="tight"
+          lineHeight="tight"
           mb={6}
         >
-          Hello, this is AboutUsPage
+          Hello, this is HomePage
         </Text>
         
         <Text 
@@ -33,10 +35,11 @@ const AboutUsPage = () => {
           color="gray.600"
           _dark={{ color: "gray.300" }}
           fontFamily="body"
+          lineHeight="relaxed"
           maxW="5xl"
           mx="auto"
         >
-          Learn about NetFood's history and mission
+          Welcome to NetFood - Your trusted wholesale grocery supplier
         </Text>
       </Box>
       
@@ -45,4 +48,4 @@ const AboutUsPage = () => {
   )
 }
 
-export default AboutUsPage
+export default HomePage
