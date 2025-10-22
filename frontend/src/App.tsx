@@ -12,7 +12,7 @@ function App() {
       <Route path="/catalog" element={<CatalogPage />} />
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/contact" element={<ContactUsPage />} />
-      <Route path="/open-account" element={<OpenAnAccount />} />
+  <Route path="/account" element={<OpenAnAccount />} />
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

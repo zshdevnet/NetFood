@@ -34,6 +34,10 @@ const Navigation = () => {
             display="flex" 
             alignItems="center" 
             _hover={{ textDecoration: "none" }}
+            _active={{ transform: "scale(0.98)" }}
+            _focus={{ boxShadow: "none", outline: "none" }}
+            _focusVisible={{ boxShadow: "none", outline: "none" }}
+            transition="transform 0.12s ease-out"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <Image 
@@ -58,6 +62,8 @@ const Navigation = () => {
               px={{ md: 2 }}
               py={{ md: 2 }}
               _hover={{ textDecoration: "none", color: "#2D7A32" }}
+              _focus={{ boxShadow: "none", outline: "none" }}
+              _focusVisible={{ boxShadow: "none", outline: "none" }}
               _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
             >
               Catalog
@@ -71,6 +77,8 @@ const Navigation = () => {
               px={{ md: 2 }}
               py={{ md: 2 }}
               _hover={{ textDecoration: "none", color: "#2D7A32" }}
+              _focus={{ boxShadow: "none", outline: "none" }}
+              _focusVisible={{ boxShadow: "none", outline: "none" }}
               _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
             >
               About Us
@@ -84,6 +92,8 @@ const Navigation = () => {
               px={{ md: 2 }}
               py={{ md: 2 }}
               _hover={{ textDecoration: "none", color: "#2D7A32" }}
+              _focus={{ boxShadow: "none", outline: "none" }}
+              _focusVisible={{ boxShadow: "none", outline: "none" }}
               _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
             >
               Contact Us
@@ -97,6 +107,8 @@ const Navigation = () => {
               color="gray.600"
               _hover={{ bg: "transparent" }}
               _active={{ bg: "transparent" }}
+              _focus={{ boxShadow: "none", outline: "none" }}
+              _focusVisible={{ boxShadow: "none", outline: "none" }}
               _dark={{ 
                 color: "#E0E0E0", 
                 _hover: { bg: "transparent", color: "#D35400" },
@@ -106,7 +118,7 @@ const Navigation = () => {
               {colorMode === "light" ? <FiMoon /> : <FiSun />}
             </IconButton>
             
-            <Link href="/open-account" display={{ base: "none", md: "inline-flex" }} _hover={{ textDecoration: "none" }}>
+            <Link href="/account" display={{ base: "none", md: "inline-flex" }} _hover={{ textDecoration: "none" }} _focus={{ boxShadow: "none", outline: "none" }} _focusVisible={{ boxShadow: "none", outline: "none" }}>
               <Button 
                 bg="#D35400"
                 color="white"
@@ -119,7 +131,7 @@ const Navigation = () => {
                   _hover: { bg: "#E55100" } 
                 }}
               >
-                Open An Account
+                Account
               </Button>
             </Link>
           </Flex>

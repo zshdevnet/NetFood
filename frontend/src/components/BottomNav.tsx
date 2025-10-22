@@ -10,10 +10,9 @@ type Item = {
 }
 
 const items: Item[] = [
+    { label: "Favorites", href: "/favorites", icon: (p) => <FiHeart size={p.size ?? 22} /> },
   { label: "Catalog", href: "/catalog", icon: (p) => <FiGrid size={p.size ?? 22} /> },
   { label: "Cart", href: "/cart", icon: (p) => <FiShoppingCart size={p.size ?? 22} /> },
-  { label: "Favorites", href: "/favorites", icon: (p) => <FiHeart size={p.size ?? 22} /> },
-  { label: "Profile", href: "/profile", icon: (p) => <FiUser size={p.size ?? 22} /> },
   { label: "Account", href: "/account", icon: (p) => <FiUser size={p.size ?? 22} /> },
 ]
 
@@ -58,8 +57,8 @@ const BottomNav = () => {
               color={color}
               _hover={{ color: "#D35400", textDecoration: "none" }}
               _active={{ color: "#D35400" }}
-              _focus={{ boxShadow: "none" }}
-              _focusVisible={{ boxShadow: "none" }}
+              _focus={{ boxShadow: "none", outline: "none" }}
+              _focusVisible={{ boxShadow: "none", outline: "none" }}
             >
               {item.icon({ size: 22 })}
               <Text fontSize="xs">{item.label}</Text>
