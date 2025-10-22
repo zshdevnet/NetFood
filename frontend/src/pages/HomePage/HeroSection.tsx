@@ -6,8 +6,12 @@ import {
   HStack,
   Circle,
   Image,
+  Spinner,
+  Button,
 } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
+import { apiService } from "../../services/api";
+import type { HeroSlider } from "../../services/api";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,44 +19,82 @@ const HeroSection = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-
   const [isHovered, setIsHovered] = useState(false);
 
-  const slides = [
-    {
-      id: 1,
-      title: "Fresh Organic Produce",
-      subtitle: "Farm to Table Excellence",
-      description:
-        "Premium quality fruits and vegetables sourced directly from local farms",
-      productImage: "honey.png", // You can replace with actual product images
-      bgPattern:
-        "linear-gradient(135deg, #2D5A3D 0%, #3E9A42 50%, #4CAF50 100%)",
-    },
-    {
-      id: 2,
-      title: "Wholesale Solutions",
-      subtitle: "Built for Business",
-      description:
-        "Competitive pricing and bulk quantities for restaurants and retailers",
-      productImage: "milk.png",
-      bgPattern:
-        "linear-gradient(135deg, #1B4B2A 0%, #2D5A3D 50%, #3E9A42 100%)",
-    },
-    {
-      id: 3,
-      title: "Quality Guaranteed",
-      subtitle: "Trust & Reliability",
-      description:
-        "Certified suppliers and rigorous quality control for every order",
-      productImage: "milk.png",
-      bgPattern:
-        "linear-gradient(135deg, #0F3A1F 0%, #1B4B2A 50%, #2D5A3D 100%)",
-    },
+  // New state for API data
+  const [slides, setSlides] = useState<HeroSlider[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Background gradient variations for slides
+  const backgroundGradients = [
+    "linear-gradient(135deg, #2D5A3D 0%, #3E9A42 50%, #4CAF50 100%)",
+    "linear-gradient(135deg, #1B4B2A 0%, #2D5A3D 50%, #3E9A42 100%)",
+    "linear-gradient(135deg, #0F3A1F 0%, #1B4B2A 50%, #2D5A3D 100%)",
+    "linear-gradient(135deg, #2F4F2F 0%, #228B22 50%, #32CD32 100%)",
+    "linear-gradient(135deg, #006400 0%, #2E8B57 50%, #3CB371 100%)",
   ];
+
+  // Fetch slides from backend
+  useEffect(() => {
+    const fetchSlides = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await apiService.getHeroSliders();
+
+        if (response.success && response.results.length > 0) {
+          // Sort slides by order
+          const sortedSlides = response.results.sort(
+            (a, b) => a.order - b.order
+          );
+          setSlides(sortedSlides);
+        } else {
+          setError("No slides available");
+        }
+      } catch (err) {
+        console.error("Failed to fetch slides:", err);
+        setError(
+          "Failed to load slides. Please check if the backend is running."
+        );
+
+        // Fallback to sample data for development
+        setSlides([
+          {
+            id: 1,
+            title: "Fresh Organic Produce",
+            subtitle: "Farm to Table Excellence",
+            description:
+              "Premium quality fruits and vegetables sourced directly from local farms",
+            image_url: "/honey.png",
+            webp_url: null,
+            image_alt: "Fresh Organic Produce",
+            order: 1,
+            is_active: true,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSlides();
+  }, []);
+
+  // Reset current slide when slides change
+  useEffect(() => {
+    if (slides.length > 0 && currentSlide >= slides.length) {
+      setCurrentSlide(0);
+    }
+  }, [slides, currentSlide]);
 
   // Auto-advance slides
   useEffect(() => {
+    if (slides.length === 0) return;
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000); // Change slide every 5 seconds
@@ -154,6 +196,85 @@ const HeroSection = () => {
     setTouchEnd(0);
   };
 
+  // Loading state
+  if (loading) {
+    return (
+      <Container maxW="1450px" px={0}>
+        <Box
+          h={{ base: "400px", md: "500px", lg: "600px" }}
+          borderRadius="xl"
+          mx={{ base: 4, md: 0 }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="gray.100"
+        >
+          <VStack>
+            <Spinner size="xl" color="blue.500" />
+            <Text>Loading hero content...</Text>
+          </VStack>
+        </Box>
+      </Container>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <Container maxW="1450px" px={0}>
+        <Box
+          h={{ base: "400px", md: "500px", lg: "600px" }}
+          borderRadius="xl"
+          mx={{ base: 4, md: 0 }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="red.50"
+          border="1px solid"
+          borderColor="red.200"
+        >
+          <VStack>
+            <Text color="red.500" fontSize="lg" fontWeight="bold">
+              Failed to load hero content
+            </Text>
+            <Text color="red.400">{error}</Text>
+            <Button colorScheme="red" onClick={() => window.location.reload()}>
+              Retry
+            </Button>
+          </VStack>
+        </Box>
+      </Container>
+    );
+  }
+
+  // No slides available
+  if (slides.length === 0) {
+    return (
+      <Container maxW="1450px" px={0}>
+        <Box
+          h={{ base: "400px", md: "500px", lg: "600px" }}
+          borderRadius="xl"
+          mx={{ base: 4, md: 0 }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="gray.50"
+          border="1px solid"
+          borderColor="gray.200"
+        >
+          <VStack>
+            <Text color="gray.500" fontSize="lg">
+              No hero content available
+            </Text>
+            <Text color="gray.400" fontSize="sm">
+              Please add some hero sliders in the admin panel
+            </Text>
+          </VStack>
+        </Box>
+      </Container>
+    );
+  }
+
   return (
     <Container maxW="1450px" px={0}>
       <Box
@@ -162,7 +283,7 @@ const HeroSection = () => {
         h={{ base: "400px", md: "500px", lg: "600px" }}
         borderRadius="xl"
         overflow="hidden"
-        bg={slides[currentSlide].bgPattern}
+        bgImage={backgroundGradients[currentSlide % backgroundGradients.length]}
         mx={{ base: 4, md: 0 }}
         boxShadow="xl"
         onWheel={handleWheel}
@@ -276,7 +397,7 @@ const HeroSection = () => {
                   maxW={{ base: "300px", lg: "500px" }}
                 >
                   <Image
-                    src={slide.productImage}
+                    src={slide.webp_url || slide.image_url || ""}
                     alt={slide.title}
                     w="100%"
                     h="auto"
