@@ -24,8 +24,6 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
     return window.location.pathname.startsWith(href);
   };
 
-  if (!isOpen) return null;
-
   return (
     <>
       {/* Backdrop */}
@@ -39,6 +37,9 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
         zIndex={1999}
         onClick={onClose}
         display={{ base: "block", md: "none" }}
+        opacity={isOpen ? 1 : 0}
+        visibility={isOpen ? "visible" : "hidden"}
+        transition="opacity 0.3s ease, visibility 0.3s ease"
       />
 
       {/* Drawer */}
@@ -52,9 +53,9 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
         zIndex={2000}
         display={{ base: "block", md: "none" }}
         transform={isOpen ? "translateX(0)" : "translateX(-100%)"}
-        transition="transform 0.3s ease"
+        transition="transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
         overflowY="auto"
-        boxShadow="xl"
+        boxShadow="2xl"
         _dark={{ bg: "#1a1a1a" }}
       >
         {/* Header */}
@@ -118,9 +119,24 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
                       ? "#E2E8F0"
                       : "rgba(255, 255, 255, 0.1)",
                   opacity: isOpen ? 1 : 0,
-                  transform: isOpen ? "translateX(0)" : "translateX(-20px)",
-                  transition: "all 0.3s ease",
-                  transitionDelay: `${index * 0.05}s`,
+                  transform: isOpen ? "translateX(0)" : "translateX(-30px)",
+                  transition: "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                  transitionDelay: isOpen ? `${index * 0.08}s` : "0s",
+                }}
+                onMouseEnter={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.backgroundColor =
+                      colorMode === "light"
+                        ? "#f7fafc"
+                        : "rgba(255, 255, 255, 0.05)";
+                    e.currentTarget.style.color = activeColor;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = defaultColor;
+                  }
                 }}
               >
                 <Icon size={20} />

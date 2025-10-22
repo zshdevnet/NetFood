@@ -129,28 +129,29 @@ const Navigation = () => {
               </IconButton>
             </Flex>
 
-            <RouterLink
-              to="/account"
-              style={{
-                textDecoration: "none",
-                display: window.innerWidth >= 768 ? "inline-flex" : "none",
-              }}
-            >
-              <Button
-                bg="#D35400"
-                color="white"
-                size="sm"
-                fontFamily="accent"
-                fontWeight="semibold"
-                _hover={{ bg: "#B8440F" }}
-                _dark={{
-                  bg: "#D35400",
-                  _hover: { bg: "#E55100" },
+            <Box display={{ base: "none", md: "inline-flex" }}>
+              <RouterLink
+                to="/account"
+                style={{
+                  textDecoration: "none",
                 }}
               >
-                Account
-              </Button>
-            </RouterLink>
+                <Button
+                  bg="#D35400"
+                  color="white"
+                  size="sm"
+                  fontFamily="accent"
+                  fontWeight="semibold"
+                  _hover={{ bg: "#B8440F" }}
+                  _dark={{
+                    bg: "#D35400",
+                    _hover: { bg: "#E55100" },
+                  }}
+                >
+                  Account
+                </Button>
+              </RouterLink>
+            </Box>
           </Flex>
         </Flex>
       </Container>
