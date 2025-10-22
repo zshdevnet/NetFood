@@ -1,10 +1,18 @@
 import { Box, Flex, Link, Button, Container, IconButton, Image } from "@chakra-ui/react"
 import { useColorMode } from "@/components/ui/color-mode"
 import { FiSun, FiMoon } from "react-icons/fi"
+import { useLocation } from "react-router-dom"
 import BottomNav from "./BottomNav"
 
 const Navigation = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const location = useLocation()
+
+  const isActive = (href: string) => {
+    const path = location.pathname
+    if (href === "/") return path === "/"
+    return path.startsWith(href)
+  }
 
   return (
     <Box 
@@ -42,54 +50,41 @@ const Navigation = () => {
           {/* Navigation Links (hidden on mobile) */}
           <Flex gap={8} align="center">
             <Link 
-              href="/" 
-              color="#3E9A42" 
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={{ md: "lg" }}
-              fontWeight="semibold"
-              px={{ md: 2 }}
-              py={{ md: 2 }}
-              _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "white" }}
-            >
-              Home
-            </Link>
-            <Link 
               href="/catalog" 
-              color="#3E9A42"
+              color={isActive("/catalog") ? "#D35400" : (colorMode === "light" ? "#3E9A42" : "white")}
               display={{ base: "none", md: "inline-flex" }}
               fontSize={{ md: "lg" }}
               fontWeight="semibold"
               px={{ md: 2 }}
               py={{ md: 2 }}
-              _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "white" }}
+              _hover={{ textDecoration: "none", color: "#2D7A32" }}
+              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
             >
               Catalog
             </Link>
             <Link 
               href="/about" 
-              color="#3E9A42" 
+              color={isActive("/about") ? "#D35400" : (colorMode === "light" ? "#3E9A42" : "white")}
               display={{ base: "none", md: "inline-flex" }}
               fontSize={{ md: "lg" }}
               fontWeight="semibold"
               px={{ md: 2 }}
               py={{ md: 2 }}
-              _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "white" }}
+              _hover={{ textDecoration: "none", color: "#2D7A32" }}
+              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
             >
               About Us
             </Link>
             <Link 
               href="/contact" 
-              color="#3E9A42" 
+              color={isActive("/contact") ? "#D35400" : (colorMode === "light" ? "#3E9A42" : "white")}
               display={{ base: "none", md: "inline-flex" }}
               fontSize={{ md: "lg" }}
               fontWeight="semibold"
               px={{ md: 2 }}
               py={{ md: 2 }}
-              _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "white" }}
+              _hover={{ textDecoration: "none", color: "#2D7A32" }}
+              _dark={{ _hover: { color: "#D35400", textDecoration: "none" } }}
             >
               Contact Us
             </Link>
@@ -104,28 +99,29 @@ const Navigation = () => {
               _active={{ bg: "transparent" }}
               _dark={{ 
                 color: "#E0E0E0", 
-                _hover: { bg: "transparent" },
-                _active: { bg: "transparent" }
+                _hover: { bg: "transparent", color: "#D35400" },
+                _active: { bg: "transparent", color: "#D35400" }
               }}
             >
               {colorMode === "light" ? <FiMoon /> : <FiSun />}
             </IconButton>
             
-            <Button 
-              bg="#D35400"
-              color="white"
-              size="sm"
-              fontFamily="accent"
-              fontWeight="semibold"
-              _hover={{ bg: "#B8440F" }}
-              display={{ base: "none", md: "inline-flex" }}
-              _dark={{ 
-                bg: "#D35400", 
-                _hover: { bg: "#E55100" } 
-              }}
-            >
-              Open An Account
-            </Button>
+            <Link href="/open-account" display={{ base: "none", md: "inline-flex" }} _hover={{ textDecoration: "none" }}>
+              <Button 
+                bg="#D35400"
+                color="white"
+                size="sm"
+                fontFamily="accent"
+                fontWeight="semibold"
+                _hover={{ bg: "#B8440F" }}
+                _dark={{ 
+                  bg: "#D35400", 
+                  _hover: { bg: "#E55100" } 
+                }}
+              >
+                Open An Account
+              </Button>
+            </Link>
           </Flex>
         </Flex>
       </Container>
