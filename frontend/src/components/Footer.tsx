@@ -1,25 +1,31 @@
-import { Box, Container, Text } from "@chakra-ui/react"
+import { Box, Container, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
-    <Box 
+    <Box
       as="footer"
-      bg="transparent"
+      bg="white"
       color="inherit"
-      py={6}
-      pb={{ base: 16, md: 6 }}
+      py={{ base: 3, md: 6 }}
+      pb={{ base: 8, md: 6 }}
       mt="auto"
       borderTopWidth="1px"
       borderColor="gray.200"
-      _dark={{ borderColor: "whiteAlpha.300" }}
+      position={{ base: "sticky", md: "static" }}
+      bottom={{ base: "60px", md: "auto" }}
+      zIndex={{ base: 999, md: "auto" }}
+      _dark={{
+        borderColor: "whiteAlpha.300",
+        bg: "#121212",
+      }}
     >
-  <Container maxW="1450px" px={0} textAlign="center">
+      <Container maxW="1450px" px={0} textAlign="center">
         <Text fontSize="sm" color="gray.600" _dark={{ color: "gray.400" }}>
           © {new Date().getFullYear()} NetFood. All rights reserved.
         </Text>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
