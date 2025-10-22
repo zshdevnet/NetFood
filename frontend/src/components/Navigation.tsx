@@ -8,7 +8,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { useColorMode } from "@/components/ui/color-mode";
-import { FiSun, FiMoon } from "react-icons/fi";
+import { FiSun, FiMoon, FiShoppingCart } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import BottomNav from "./BottomNav";
 
@@ -146,24 +146,53 @@ const Navigation = () => {
               Contact Us
             </Link>
 
-            {/* Color Mode Switcher */}
-            <IconButton
-              aria-label="Toggle color mode"
-              onClick={toggleColorMode}
-              variant="ghost"
-              color="gray.600"
-              _hover={{ bg: "transparent" }}
-              _active={{ bg: "transparent" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
-              _dark={{
-                color: "#E0E0E0",
-                _hover: { bg: "transparent", color: "#D35400" },
-                _active: { bg: "transparent", color: "#D35400" },
-              }}
-            >
-              {colorMode === "light" ? <FiMoon /> : <FiSun />}
-            </IconButton>
+            {/* Cart and Color Mode Icons with smaller gap */}
+            <Flex gap={2} align="center">
+              {/* Cart Icon */}
+              <Link
+                href="/cart"
+                display={{ base: "none", md: "inline-flex" }}
+                _hover={{ textDecoration: "none" }}
+                _focus={{ boxShadow: "none", outline: "none" }}
+                _focusVisible={{ boxShadow: "none", outline: "none" }}
+              >
+                <IconButton
+                  aria-label="Shopping cart"
+                  variant="ghost"
+                  color="gray.600"
+                  _hover={{ bg: "transparent", color: "#D35400" }}
+                  _active={{ bg: "transparent" }}
+                  _focus={{ boxShadow: "none", outline: "none" }}
+                  _focusVisible={{ boxShadow: "none", outline: "none" }}
+                  _dark={{
+                    color: "#E0E0E0",
+                    _hover: { bg: "transparent", color: "#D35400" },
+                    _active: { bg: "transparent", color: "#D35400" },
+                  }}
+                >
+                  <FiShoppingCart />
+                </IconButton>
+              </Link>
+
+              {/* Color Mode Switcher */}
+              <IconButton
+                aria-label="Toggle color mode"
+                onClick={toggleColorMode}
+                variant="ghost"
+                color="gray.600"
+                _hover={{ bg: "transparent", color: "#D35400" }}
+                _active={{ bg: "transparent" }}
+                _focus={{ boxShadow: "none", outline: "none" }}
+                _focusVisible={{ boxShadow: "none", outline: "none" }}
+                _dark={{
+                  color: "#E0E0E0",
+                  _hover: { bg: "transparent", color: "#D35400" },
+                  _active: { bg: "transparent", color: "#D35400" },
+                }}
+              >
+                {colorMode === "light" ? <FiMoon /> : <FiSun />}
+              </IconButton>
+            </Flex>
 
             <Link
               href="/account"
