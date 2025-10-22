@@ -31,6 +31,16 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
     return window.location.pathname.startsWith(href);
   };
 
+  const handleLogoClick = () => {
+    // Close the menu
+    onClose();
+    // Navigate to home and scroll to top
+    window.location.href = "/";
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
+  };
+
   return (
     <>
       {/* Overlay */}
@@ -72,12 +82,19 @@ const MobileMenuDrawer = ({ isOpen, onClose }: MobileMenuDrawerProps) => {
           borderColor="gray.200"
           _dark={{ borderColor: "whiteAlpha.300" }}
         >
-          <Image
-            src="/logos/netfood.webp"
-            alt="NetFood Logo"
-            height="80px"
-            width="auto"
-          />
+          <Box
+            cursor="pointer"
+            onClick={handleLogoClick}
+            _hover={{ opacity: 0.8 }}
+            transition="opacity 0.2s"
+          >
+            <Image
+              src="/logos/netfood.webp"
+              alt="NetFood Logo"
+              height="80px"
+              width="auto"
+            />
+          </Box>
           <IconButton
             aria-label="Close menu"
             onClick={onClose}
