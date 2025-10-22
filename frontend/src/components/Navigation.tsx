@@ -18,7 +18,7 @@ const Navigation = () => {
       borderColor="gray.200"
       _dark={{ bg: "#121212", color: "#E0E0E0", borderColor: "whiteAlpha.300" }}
     >
-  <Container maxW="1450px" px={0}>
+  <Container maxW="1450px" px={{ base: 4, md: 0 }}>
         <Flex justify="space-between" align="center">
           {/* Logo/Brand */}
           <Link 
@@ -31,7 +31,7 @@ const Navigation = () => {
             <Image 
               src="/logos/netfood.webp" 
               alt="NetFood Logo" 
-              height="48px"
+              height={{ base: "60px", md: "72px" }}
               width="auto"
               cursor="pointer"
               _hover={{ opacity: 0.9 }}
@@ -40,13 +40,17 @@ const Navigation = () => {
           </Link>
 
           {/* Navigation Links (hidden on mobile) */}
-          <Flex gap={6} align="center">
+          <Flex gap={8} align="center">
             <Link 
               href="/" 
               color="#3E9A42" 
               display={{ base: "none", md: "inline-flex" }}
+              fontSize={{ md: "lg" }}
+              fontWeight="semibold"
+              px={{ md: 2 }}
+              py={{ md: 2 }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "#3E9A42" }}
+              _dark={{ color: "white" }}
             >
               Home
             </Link>
@@ -54,8 +58,12 @@ const Navigation = () => {
               href="/catalog" 
               color="#3E9A42"
               display={{ base: "none", md: "inline-flex" }}
+              fontSize={{ md: "lg" }}
+              fontWeight="semibold"
+              px={{ md: 2 }}
+              py={{ md: 2 }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "#3E9A42" }}
+              _dark={{ color: "white" }}
             >
               Catalog
             </Link>
@@ -63,8 +71,12 @@ const Navigation = () => {
               href="/about" 
               color="#3E9A42" 
               display={{ base: "none", md: "inline-flex" }}
+              fontSize={{ md: "lg" }}
+              fontWeight="semibold"
+              px={{ md: 2 }}
+              py={{ md: 2 }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "#3E9A42" }}
+              _dark={{ color: "white" }}
             >
               About Us
             </Link>
@@ -72,8 +84,12 @@ const Navigation = () => {
               href="/contact" 
               color="#3E9A42" 
               display={{ base: "none", md: "inline-flex" }}
+              fontSize={{ md: "lg" }}
+              fontWeight="semibold"
+              px={{ md: 2 }}
+              py={{ md: 2 }}
               _hover={{ textDecoration: "underline", color: "#2D7A32" }}
-              _dark={{ color: "#3E9A42" }}
+              _dark={{ color: "white" }}
             >
               Contact Us
             </Link>
