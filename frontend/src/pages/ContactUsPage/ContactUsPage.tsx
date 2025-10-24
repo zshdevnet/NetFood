@@ -1,22 +1,35 @@
-import { Box, Container, Heading, Text, VStack } from "@chakra-ui/react"
-import Navigation from "../../components/Navigation"
-import Footer from "../../components/Footer"
-import FormSection from "./FormSection"
-import ContactInformation from "./ContactInformation"
-import MapSection from "./MapSection"
+import { Box, Container, Heading, Text, VStack } from "@chakra-ui/react";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
+import Breadcrumb from "../../components/Breadcrumb";
+import FormSection from "./FormSection";
+import ContactInformation from "./ContactInformation";
+import MapSection from "./MapSection";
 
 const ContactUsPage = () => {
   return (
-    <Box 
-      minH="100vh" 
-      display="flex" 
+    <Box
+      minH="100vh"
+      display="flex"
       flexDirection="column"
       bg="gray.50"
       _dark={{ bg: "#0A0A0A" }}
     >
       <Navigation />
-      
-      <Box flex="1" py={{ base: 8, md: 16 }} px={0} maxW="1450px" mx="auto" w="100%">
+
+      {/* Breadcrumb */}
+      <Container maxW="1450px">
+        <Breadcrumb items={[{ label: "Contact Us", isCurrentPage: true }]} />
+      </Container>
+
+      <Box
+        flex="1"
+        py={{ base: 8, md: 16 }}
+        px={0}
+        maxW="1450px"
+        mx="auto"
+        w="100%"
+      >
         <Container maxW="1200px" px={{ base: 4, md: 6 }}>
           {/* Page Header */}
           <VStack gap={3} mb={{ base: 10, md: 14 }} textAlign="center">
@@ -28,7 +41,7 @@ const ContactUsPage = () => {
               borderRadius="full"
               mb={2}
             >
-              <Text 
+              <Text
                 fontSize="sm"
                 fontWeight="600"
                 color="#3E9A42"
@@ -38,7 +51,7 @@ const ContactUsPage = () => {
                 Contact Us
               </Text>
             </Box>
-            <Heading 
+            <Heading
               fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }}
               color="gray.900"
               _dark={{ color: "#FFFFFF" }}
@@ -49,15 +62,16 @@ const ContactUsPage = () => {
             >
               Let's Work Together
             </Heading>
-            <Text 
+            <Text
               fontSize={{ base: "md", md: "lg" }}
               color="gray.600"
               _dark={{ color: "gray.400" }}
               maxW="2xl"
               lineHeight="1.7"
             >
-              Have questions about our wholesale products? We'd love to hear from you. 
-              Fill out the form below and our team will get back to you within 24 hours.
+              Have questions about our wholesale products? We'd love to hear
+              from you. Fill out the form below and our team will get back to
+              you within 24 hours.
             </Text>
           </VStack>
 
@@ -71,10 +85,10 @@ const ContactUsPage = () => {
 
       {/* Map Section */}
       <MapSection />
-      
+
       <Footer />
     </Box>
-  )
-}
+  );
+};
 
-export default ContactUsPage
+export default ContactUsPage;

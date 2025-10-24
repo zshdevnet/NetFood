@@ -11,15 +11,10 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  FiMapPin,
-  FiClock,
-  FiCheckCircle,
-  FiMail,
-  FiArrowLeft,
-} from "react-icons/fi";
+import { FiMapPin, FiClock, FiCheckCircle, FiMail } from "react-icons/fi";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Breadcrumb from "@/components/Breadcrumb";
 
 interface JobPosition {
   id: number;
@@ -154,28 +149,12 @@ const DetailCareerPage = () => {
 
   const selectedJob = jobPositions.find((job) => job.slug === jobSlug);
 
-  const handleBackToList = () => {
-    navigate("/careers");
-  };
-
   if (!selectedJob) {
     return (
       <>
         <Navigation />
         <Container maxW="1450px" py={{ base: 8, md: 12 }}>
           <VStack gap={8} align="stretch">
-            <Button
-              variant="ghost"
-              alignSelf="flex-start"
-              onClick={handleBackToList}
-              color="gray.600"
-              _hover={{ color: "#D35400", bg: "orange.50" }}
-            >
-              <HStack gap={2}>
-                <Icon as={FiArrowLeft} />
-                <Text>Back to Job Listings</Text>
-              </HStack>
-            </Button>
             <Box textAlign="center" py={12}>
               <Heading fontSize="2xl" color="gray.800" mb={4}>
                 Job Not Found
@@ -195,20 +174,15 @@ const DetailCareerPage = () => {
     <>
       <Navigation />
       <Container maxW="1450px" py={{ base: 8, md: 12 }}>
-        <VStack gap={8} align="stretch">
-          <Button
-            variant="ghost"
-            alignSelf="flex-start"
-            onClick={handleBackToList}
-            color="gray.600"
-            _hover={{ color: "#D35400", bg: "orange.50" }}
-          >
-            <HStack gap={2}>
-              <Icon as={FiArrowLeft} />
-              <Text>Back to Job Listings</Text>
-            </HStack>
-          </Button>
+        {/* Breadcrumb */}
+        <Breadcrumb
+          items={[
+            { label: "Careers", href: "/careers" },
+            { label: selectedJob.title, isCurrentPage: true },
+          ]}
+        />
 
+        <VStack gap={8} align="stretch">
           <Box
             bg="white"
             borderRadius="xl"
@@ -344,7 +318,7 @@ const DetailCareerPage = () => {
                   variant="outline"
                   size="lg"
                   flex={1}
-                  onClick={handleBackToList}
+                  onClick={() => navigate("/careers")}
                 >
                   View More Jobs
                 </Button>

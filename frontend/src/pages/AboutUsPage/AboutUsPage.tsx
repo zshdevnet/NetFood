@@ -21,6 +21,7 @@ import {
 import { useColorMode } from "@/components/ui/color-mode";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const AboutUsPage = () => {
   const { colorMode } = useColorMode();
@@ -44,6 +45,11 @@ const AboutUsPage = () => {
       _dark={{ bg: "#121212" }}
     >
       <Navigation />
+
+      {/* Breadcrumb */}
+      <Container maxW="1450px">
+        <Breadcrumb items={[{ label: "About Us", isCurrentPage: true }]} />
+      </Container>
 
       {/* Hero Section */}
       <Box

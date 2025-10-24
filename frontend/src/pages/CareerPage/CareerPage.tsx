@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { FiMapPin, FiClock } from "react-icons/fi";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Breadcrumb from "@/components/Breadcrumb";
 
 interface JobPosition {
   id: number;
@@ -144,6 +145,11 @@ const CareerPage = () => {
   return (
     <>
       <Navigation />
+
+      {/* Breadcrumb */}
+      <Container maxW="1450px">
+        <Breadcrumb items={[{ label: "Careers", isCurrentPage: true }]} />
+      </Container>
 
       {/* Hero Section */}
       <Box

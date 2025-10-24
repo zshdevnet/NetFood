@@ -1,21 +1,27 @@
-import { Box, Text } from "@chakra-ui/react"
-import Navigation from "../../components/Navigation"
-import Footer from "../../components/Footer"
+import { Box, Text, Container } from "@chakra-ui/react";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const CatalogPage = () => {
   return (
-    <Box 
-      minH="100vh" 
-      display="flex" 
+    <Box
+      minH="100vh"
+      display="flex"
       flexDirection="column"
       bg="white"
       _dark={{ bg: "#121212" }}
     >
       <Navigation />
-      
+
+      {/* Breadcrumb */}
+      <Container maxW="1450px">
+        <Breadcrumb items={[{ label: "Catalog", isCurrentPage: true }]} />
+      </Container>
+
       <Box flex="1" py={0} px={0} maxW="1450px" mx="auto">
-        <Text 
-          fontSize="5xl" 
+        <Text
+          fontSize="5xl"
           textAlign="center"
           color="gray.800"
           _dark={{ color: "#E0E0E0" }}
@@ -26,9 +32,9 @@ const CatalogPage = () => {
         >
           Hello, this is CatalogPage
         </Text>
-        
-        <Text 
-          fontSize="xl" 
+
+        <Text
+          fontSize="xl"
           textAlign="center"
           color="gray.600"
           _dark={{ color: "gray.300" }}
@@ -39,10 +45,10 @@ const CatalogPage = () => {
           Browse our wholesale grocery products
         </Text>
       </Box>
-      
+
       <Footer />
     </Box>
-  )
-}
+  );
+};
 
-export default CatalogPage
+export default CatalogPage;
