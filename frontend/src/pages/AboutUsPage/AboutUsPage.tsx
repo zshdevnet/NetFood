@@ -34,7 +34,7 @@ const AboutUsPage = () => {
   const cardBg = colorMode === "light" ? "white" : "#2D3748";
   const textColor = colorMode === "light" ? "#4A5568" : "#E2E8F0";
   const headingColor = colorMode === "light" ? "#1A202C" : "#F7FAFC";
-  const accentColor = "#D35400";
+  const accentColor = colorMode === "light" ? "#3E9A42" : "#D35400";
 
   return (
     <Box
@@ -166,12 +166,16 @@ const AboutUsPage = () => {
                 left={0}
                 right={0}
                 h="4px"
-                background="#E55100"
+                background={colorMode === "light" ? "#3E9A42" : "#E55100"}
               />
 
               <VStack gap={6} align="start">
                 <HStack gap={4}>
-                  <Circle size="60px" bg="#E55100" _dark={{ bg: "#E55100" }}>
+                  <Circle
+                    size="60px"
+                    bg={{ base: "#3E9A42", _dark: "#E55100" }}
+                    _dark={{ bg: "#E55100" }}
+                  >
                     <Icon as={FiTrendingUp} w={6} h={6} color="white" />
                   </Circle>
                   <VStack align="start" gap={1}>
@@ -229,12 +233,16 @@ const AboutUsPage = () => {
                 left={0}
                 right={0}
                 h="4px"
-                background="#E55100"
+                background={colorMode === "light" ? "#3E9A42" : "#E55100"}
               />
 
               <VStack gap={6} align="start">
                 <HStack gap={4}>
-                  <Circle size="60px" bg="#E55100" _dark={{ bg: "#E55100" }}>
+                  <Circle
+                    size="60px"
+                    bg={{ base: "#3E9A42", _dark: "#E55100" }}
+                    _dark={{ bg: "#E55100" }}
+                  >
                     <Icon as={FiTarget} w={6} h={6} color="white" />
                   </Circle>
                   <VStack align="start" gap={1}>
@@ -246,7 +254,7 @@ const AboutUsPage = () => {
                     >
                       Our Mission
                     </Text>
-                    <Text fontSize="sm" color="#D35400" fontWeight="medium">
+                    <Text fontSize="sm" color={accentColor} fontWeight="medium">
                       Excellence in Service
                     </Text>
                   </VStack>
@@ -293,12 +301,16 @@ const AboutUsPage = () => {
                 left={0}
                 right={0}
                 h="4px"
-                background="#E55100"
+                background={colorMode === "light" ? "#3E9A42" : "#E55100"}
               />
 
               <VStack gap={6} align="start">
                 <HStack gap={4}>
-                  <Circle size="60px" bg="#E55100" _dark={{ bg: "#E55100" }}>
+                  <Circle
+                    size="60px"
+                    bg={{ base: "#3E9A42", _dark: "#E55100" }}
+                    _dark={{ bg: "#E55100" }}
+                  >
                     <Icon as={FiUsers} w={6} h={6} color="white" />
                   </Circle>
                   <VStack align="start" gap={1}>
@@ -310,7 +322,7 @@ const AboutUsPage = () => {
                     >
                       Our Team
                     </Text>
-                    <Text fontSize="sm" color="#D35400" fontWeight="medium">
+                    <Text fontSize="sm" color={accentColor} fontWeight="medium">
                       Dedicated Professionals
                     </Text>
                   </VStack>
@@ -409,7 +421,7 @@ const AboutUsPage = () => {
               >
                 <Circle
                   size="60px"
-                  bg="#E55100"
+                  bg={{ base: "#3E9A42", _dark: "#E55100" }}
                   _dark={{ bg: "#E55100" }}
                   mx="auto"
                   mb={4}

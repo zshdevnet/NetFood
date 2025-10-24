@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   Badge,
-  SimpleGrid,
   Heading,
   Icon,
 } from "@chakra-ui/react";
@@ -151,102 +150,32 @@ const CareerPage = () => {
         <Breadcrumb items={[{ label: "Careers", isCurrentPage: true }]} />
       </Container>
 
-      {/* Hero Section */}
-      <Box
-        bg="linear-gradient(135deg, #D35400 0%, #E67E22 50%, #F39C12 100%)"
-        color="white"
-        py={{ base: 16, md: 24 }}
-        position="relative"
-        overflow="hidden"
-      >
-        <Container maxW="1450px" position="relative" zIndex={2}>
-          <VStack gap={6} textAlign="center" maxW="800px" mx="auto">
-            <Heading
-              fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }}
-              fontWeight="bold"
-              lineHeight="shorter"
-            >
-              Join Our Mission
-            </Heading>
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              opacity={0.9}
-              maxW="600px"
-            >
-              Help us revolutionize the food delivery industry. Build amazing
-              products, work with talented people, and make a real impact on how
-              the world eats.
-            </Text>
-            <HStack gap={8} mt={8} flexWrap="wrap" justify="center">
-              <VStack gap={1}>
-                <Text fontSize="2xl" fontWeight="bold">
-                  500K+
-                </Text>
-                <Text fontSize="sm" opacity={0.8}>
-                  Happy Customers
-                </Text>
-              </VStack>
-              <VStack gap={1}>
-                <Text fontSize="2xl" fontWeight="bold">
-                  50+
-                </Text>
-                <Text fontSize="sm" opacity={0.8}>
-                  Team Members
-                </Text>
-              </VStack>
-              <VStack gap={1}>
-                <Text fontSize="2xl" fontWeight="bold">
-                  10+
-                </Text>
-                <Text fontSize="sm" opacity={0.8}>
-                  Cities
-                </Text>
-              </VStack>
-            </HStack>
-          </VStack>
-        </Container>
-
-        {/* Background decoration */}
-        <Box
-          position="absolute"
-          top="-50%"
-          right="-10%"
-          width="600px"
-          height="600px"
-          borderRadius="full"
-          bg="rgba(255, 255, 255, 0.1)"
-          zIndex={1}
-        />
-        <Box
-          position="absolute"
-          bottom="-30%"
-          left="-10%"
-          width="400px"
-          height="400px"
-          borderRadius="full"
-          bg="rgba(255, 255, 255, 0.05)"
-          zIndex={1}
-        />
-      </Box>
-
       {/* Job Listings */}
       <Container maxW="1450px" py={{ base: 12, md: 16 }}>
         <VStack gap={8} align="stretch">
           <VStack gap={4} textAlign="center">
-            <Heading fontSize={{ base: "2xl", md: "3xl" }} color="gray.800">
+            <Heading
+              fontSize={{ base: "2xl", md: "3xl" }}
+              color={{ base: "#1A202C", _dark: "#F7FAFC" }}
+            >
               Open Positions
             </Heading>
-            <Text fontSize="lg" color="gray.600" maxW="600px">
+            <Text
+              fontSize="lg"
+              color={{ base: "#2D3748", _dark: "#E2E8F0" }}
+              maxW="600px"
+            >
               We're always looking for talented individuals to join our growing
               team. Explore our current openings and find your perfect role.
             </Text>
           </VStack>
 
-          <SimpleGrid columns={{ base: 1, lg: 2 }} gap={6} mt={8}>
+          <VStack gap={6} mt={8} align="stretch">
             {jobPositions.map((job) => (
               <Box
                 key={job.id}
-                bg="white"
+                bg={{ base: "white", _dark: "#23262F" }}
+                color={{ base: "inherit", _dark: "white" }}
                 borderRadius="xl"
                 boxShadow="lg"
                 p={6}
@@ -265,10 +194,12 @@ const CareerPage = () => {
                   <VStack align="start" gap={2}>
                     <HStack justify="space-between" w="full" flexWrap="wrap">
                       <Badge
-                        colorScheme="orange"
-                        variant="subtle"
+                        bg={{ base: "#3E9A42", _dark: "#E55100" }}
+                        color="white"
                         px={3}
                         py={1}
+                        borderRadius="md"
+                        fontWeight="500"
                       >
                         {job.department}
                       </Badge>
@@ -276,20 +207,23 @@ const CareerPage = () => {
                         <Text
                           fontSize="sm"
                           fontWeight="semibold"
-                          color="green.600"
+                          color={{ base: "#3E9A42", _dark: "#E55100" }}
                         >
                           {job.salary}
                         </Text>
                       )}
                     </HStack>
-                    <Heading fontSize="xl" color="gray.800">
+                    <Heading
+                      fontSize="xl"
+                      color={{ base: "gray.800", _dark: "white" }}
+                    >
                       {job.title}
                     </Heading>
                   </VStack>
 
                   <HStack
                     gap={6}
-                    color="gray.600"
+                    color={{ base: "gray.600", _dark: "white" }}
                     fontSize="sm"
                     flexWrap="wrap"
                   >
@@ -304,7 +238,7 @@ const CareerPage = () => {
                   </HStack>
 
                   <Text
-                    color="gray.600"
+                    color={{ base: "gray.600", _dark: "white" }}
                     overflow="hidden"
                     display="-webkit-box"
                     style={{
@@ -316,17 +250,23 @@ const CareerPage = () => {
                   </Text>
 
                   <Button
-                    colorScheme="orange"
+                    bg={{ base: "#3E9A42", _dark: "#E55100" }}
+                    color="white"
                     size="md"
                     alignSelf="flex-start"
-                    _hover={{ transform: "scale(1.05)" }}
+                    borderRadius="md"
+                    fontWeight="600"
+                    _hover={{
+                      bg: { base: "#338236", _dark: "#C14000" },
+                      transform: "scale(1.05)",
+                    }}
                   >
                     View Details
                   </Button>
                 </VStack>
               </Box>
             ))}
-          </SimpleGrid>
+          </VStack>
         </VStack>
       </Container>
 

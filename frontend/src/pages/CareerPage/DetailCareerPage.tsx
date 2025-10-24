@@ -30,14 +30,6 @@ interface JobPosition {
   salary?: string;
 }
 
-// Utility function to create URL-friendly slugs
-const createSlug = (title: string): string => {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-};
-
 const jobPositions: JobPosition[] = [
   {
     id: 1,
