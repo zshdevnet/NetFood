@@ -6,14 +6,11 @@ const Footer = () => {
       as="footer"
       bg="white"
       color="inherit"
-      py={{ base: 3, md: 6 }}
-      pb={{ base: 8, md: 6 }}
+      py={{ base: 4, md: 6 }}
+      pb={{ base: 20, md: 6 }}
       mt="auto"
       borderTopWidth="1px"
       borderColor="gray.200"
-      position={{ base: "sticky", md: "static" }}
-      bottom={{ base: "60px", md: "auto" }}
-      zIndex={{ base: 999, md: "auto" }}
       _dark={{
         borderColor: "whiteAlpha.300",
         bg: "#121212",
