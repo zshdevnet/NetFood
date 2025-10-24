@@ -131,8 +131,8 @@ const FormSection = () => {
               _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
               border="1px solid"
               borderColor="gray.200"
-              _hover={{ borderColor: "#3E9A42", _dark: { borderColor: "#3E9A42" } }}
-              _focus={{ borderColor: "#3E9A42", boxShadow: "0 0 0 1px #3E9A42" }}
+              _hover={{ borderColor: "#D35400", _dark: { borderColor: "#D35400" } }}
+              _focus={{ borderColor: "#D35400", boxShadow: "0 0 0 1px #D35400" }}
               borderRadius="xl"
               size="lg"
               transition="all 0.2s"
@@ -152,8 +152,8 @@ const FormSection = () => {
               _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
               border="1px solid"
               borderColor="gray.200"
-              _hover={{ borderColor: "#3E9A42", _dark: { borderColor: "#3E9A42" } }}
-              _focus={{ borderColor: "#3E9A42", boxShadow: "0 0 0 1px #3E9A42" }}
+              _hover={{ borderColor: "#D35400", _dark: { borderColor: "#D35400" } }}
+              _focus={{ borderColor: "#D35400", boxShadow: "0 0 0 1px #D35400" }}
               borderRadius="xl"
               size="lg"
               transition="all 0.2s"
@@ -177,8 +177,8 @@ const FormSection = () => {
               _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
               border="1px solid"
               borderColor={emailError ? "#D35400" : "gray.200"}
-              _hover={{ borderColor: emailError ? "#D35400" : "#3E9A42", _dark: { borderColor: emailError ? "#D35400" : "#3E9A42" } }}
-              _focus={{ borderColor: emailError ? "#D35400" : "#3E9A42", boxShadow: emailError ? "0 0 0 1px #D35400" : "0 0 0 1px #3E9A42" }}
+              _hover={{ borderColor: emailError ? "#D35400" : "#D35400", _dark: { borderColor: emailError ? "#D35400" : "#D35400" } }}
+              _focus={{ borderColor: emailError ? "#D35400" : "#D35400", boxShadow: emailError ? "0 0 0 1px #D35400" : "0 0 0 1px #D35400" }}
               borderRadius="xl"
               size="lg"
               transition="all 0.2s"
@@ -204,8 +204,8 @@ const FormSection = () => {
               _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
               border="1px solid"
               borderColor={phoneError ? "#D35400" : "gray.200"}
-              _hover={{ borderColor: phoneError ? "#D35400" : "#3E9A42", _dark: { borderColor: phoneError ? "#D35400" : "#3E9A42" } }}
-              _focus={{ borderColor: phoneError ? "#D35400" : "#3E9A42", boxShadow: phoneError ? "0 0 0 1px #D35400" : "0 0 0 1px #3E9A42" }}
+              _hover={{ borderColor: phoneError ? "#D35400" : "#D35400", _dark: { borderColor: phoneError ? "#D35400" : "#D35400" } }}
+              _focus={{ borderColor: phoneError ? "#D35400" : "#D35400", boxShadow: phoneError ? "0 0 0 1px #D35400" : "0 0 0 1px #D35400" }}
               borderRadius="xl"
               size="lg"
               transition="all 0.2s"
@@ -232,8 +232,8 @@ const FormSection = () => {
               _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
               border="1px solid"
               borderColor="gray.200"
-              _hover={{ borderColor: "#3E9A42", _dark: { borderColor: "#3E9A42" } }}
-              _focus={{ borderColor: "#3E9A42", boxShadow: "0 0 0 1px #3E9A42" }}
+              _hover={{ borderColor: "#D35400", _dark: { borderColor: "#D35400" } }}
+              _focus={{ borderColor: "#D35400", boxShadow: "0 0 0 1px #D35400" }}
               borderRadius="xl"
               size="lg"
               transition="all 0.2s"
@@ -252,8 +252,8 @@ const FormSection = () => {
               _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
               border="1px solid"
               borderColor="gray.200"
-              _hover={{ borderColor: "#3E9A42", _dark: { borderColor: "#3E9A42" } }}
-              _focus={{ borderColor: "#3E9A42", boxShadow: "0 0 0 1px #3E9A42" }}
+              _hover={{ borderColor: "#D35400", _dark: { borderColor: "#D35400" } }}
+              _focus={{ borderColor: "#D35400", boxShadow: "0 0 0 1px #D35400" }}
               borderRadius="xl"
               size="lg"
               transition="all 0.2s"
@@ -269,7 +269,7 @@ const FormSection = () => {
             </Text>
             <Text 
               fontSize="xs" 
-              color={isMessageValid ? "#3E9A42" : "#D35400"}
+              color={isMessageValid ? "#D35400" : "#D35400"}
               fontWeight="600"
               bg={isMessageValid ? "green.50" : "orange.50"}
               _dark={{ bg: isMessageValid ? "green.900/20" : "orange.900/20" }}
@@ -291,8 +291,8 @@ const FormSection = () => {
             _dark={{ bg: "#0F0F0F", borderColor: "whiteAlpha.200" }}
             border="1px solid"
             borderColor="gray.200"
-            _hover={{ borderColor: "#3E9A42", _dark: { borderColor: "#3E9A42" } }}
-            _focus={{ borderColor: "#3E9A42", boxShadow: "0 0 0 1px #3E9A42" }}
+            _hover={{ borderColor: "#D35400", _dark: { borderColor: "#D35400" } }}
+            _focus={{ borderColor: "#D35400", boxShadow: "0 0 0 1px #D35400" }}
             borderRadius="xl"
             resize="vertical"
             transition="all 0.2s"

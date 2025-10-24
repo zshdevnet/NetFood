@@ -33,7 +33,7 @@ const ContactInformation = () => {
             _dark={{ bg: "#1A1A1A", borderColor: "whiteAlpha.100" }}
             transition="all 0.3s"
             _hover={{ 
-              borderColor: "#3E9A42",
+              borderColor: "#D35400",
               boxShadow: "0 4px 12px rgba(62, 154, 66, 0.15)",
               transform: "translateY(-2px)"
             }}
@@ -41,7 +41,7 @@ const ContactInformation = () => {
             <HStack gap={4}>
               <Box 
                 p={3} 
-                bg="linear-gradient(135deg, #3E9A42 0%, #2d7a33 100%)"
+                bg="linear-gradient(135deg, #D35400 0%, #2d7a33 100%)"
                 borderRadius="lg"
                 color="white"
                 boxShadow="0 4px 12px rgba(62, 154, 66, 0.2)"
@@ -54,7 +54,7 @@ const ContactInformation = () => {
                 </Text>
                 <Link 
                   href="mailto:info@netfood.us" 
-                  color="#3E9A42"
+                  color="#D35400"
                   fontWeight="500"
                   fontSize="sm"
                   _hover={{ color: "#D35400", textDecoration: "underline" }}
@@ -76,7 +76,7 @@ const ContactInformation = () => {
             borderColor="gray.100"
             transition="all 0.3s"
             _hover={{ 
-              borderColor: "#3E9A42",
+              borderColor: "#D35400",
               boxShadow: "0 4px 12px rgba(62, 154, 66, 0.15)",
               transform: "translateY(-2px)"
             }}
@@ -84,7 +84,7 @@ const ContactInformation = () => {
             <HStack gap={4}>
               <Box 
                 p={3} 
-                bg="linear-gradient(135deg, #3E9A42 0%, #2d7a33 100%)"
+                bg="linear-gradient(135deg, #D35400 0%, #2d7a33 100%)"
                 borderRadius="lg"
                 color="white"
                 boxShadow="0 4px 12px rgba(62, 154, 66, 0.2)"
@@ -97,7 +97,7 @@ const ContactInformation = () => {
                 </Text>
                 <Link 
                   href="tel:+15714498385" 
-                  color="#3E9A42"
+                  color="#D35400"
                   fontWeight="500"
                   fontSize="sm"
                   _hover={{ color: "#D35400", textDecoration: "underline" }}
@@ -119,7 +119,7 @@ const ContactInformation = () => {
             borderColor="gray.100"
             transition="all 0.3s"
             _hover={{ 
-              borderColor: "#3E9A42",
+              borderColor: "#D35400",
               boxShadow: "0 4px 12px rgba(62, 154, 66, 0.15)",
               transform: "translateY(-2px)"
             }}
@@ -127,7 +127,7 @@ const ContactInformation = () => {
             <HStack gap={4} align="flex-start">
               <Box 
                 p={3} 
-                bg="linear-gradient(135deg, #3E9A42 0%, #2d7a33 100%)"
+                bg="linear-gradient(135deg, #D35400 0%, #2d7a33 100%)"
                 borderRadius="lg"
                 color="white"
                 boxShadow="0 4px 12px rgba(62, 154, 66, 0.2)"
@@ -168,7 +168,7 @@ const ContactInformation = () => {
                 borderRadius="lg"
                 color="gray.700"
                 _dark={{ color: "gray.300" }}
-                _hover={{ bg: "#3E9A42", color: "white", transform: "translateY(-4px)", boxShadow: "0 8px 16px rgba(62, 154, 66, 0.3)" }}
+                _hover={{ bg: "#D35400", color: "white", transform: "translateY(-4px)", boxShadow: "0 8px 16px rgba(62, 154, 66, 0.3)" }}
                 transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                 display="flex"
                 alignItems="center"
@@ -184,7 +184,7 @@ const ContactInformation = () => {
                 borderRadius="lg"
                 color="gray.700"
                 _dark={{ color: "gray.300" }}
-                _hover={{ bg: "#3E9A42", color: "white", transform: "translateY(-4px)", boxShadow: "0 8px 16px rgba(62, 154, 66, 0.3)" }}
+                _hover={{ bg: "#D35400", color: "white", transform: "translateY(-4px)", boxShadow: "0 8px 16px rgba(62, 154, 66, 0.3)" }}
                 transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                 display="flex"
                 alignItems="center"
@@ -200,7 +200,7 @@ const ContactInformation = () => {
                 borderRadius="lg"
                 color="gray.700"
                 _dark={{ color: "gray.300" }}
-                _hover={{ bg: "#3E9A42", color: "white", transform: "translateY(-4px)", boxShadow: "0 8px 16px rgba(62, 154, 66, 0.3)" }}
+                _hover={{ bg: "#D35400", color: "white", transform: "translateY(-4px)", boxShadow: "0 8px 16px rgba(62, 154, 66, 0.3)" }}
                 transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                 display="flex"
                 alignItems="center"
@@ -248,7 +248,7 @@ const ContactInformation = () => {
               _dark={{ bg: "#0F0F0F" }}
               borderRadius="xl"
               borderLeft="4px solid"
-              borderColor="#3E9A42"
+              borderColor="#D35400"
             >
               <HStack justify="space-between" mb={1}>
                 <Text fontWeight="600" color="gray.700" _dark={{ color: "gray.300" }} fontSize="sm">
@@ -261,7 +261,7 @@ const ContactInformation = () => {
                   _dark={{ bg: "green.900/30" }}
                   borderRadius="md"
                 >
-                  <Text fontSize="xs" fontWeight="700" color="#3E9A42">
+                  <Text fontSize="xs" fontWeight="700" color="#D35400">
                     OPEN
                   </Text>
                 </Box>
@@ -278,7 +278,7 @@ const ContactInformation = () => {
               _dark={{ bg: "#0F0F0F" }}
               borderRadius="xl"
               borderLeft="4px solid"
-              borderColor="#3E9A42"
+              borderColor="#D35400"
             >
               <HStack justify="space-between" mb={1}>
                 <Text fontWeight="600" color="gray.700" _dark={{ color: "gray.300" }} fontSize="sm">
@@ -291,7 +291,7 @@ const ContactInformation = () => {
                   _dark={{ bg: "green.900/30" }}
                   borderRadius="md"
                 >
-                  <Text fontSize="xs" fontWeight="700" color="#3E9A42">
+                  <Text fontSize="xs" fontWeight="700" color="#D35400">
                     OPEN
                   </Text>
                 </Box>
