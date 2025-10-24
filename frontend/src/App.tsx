@@ -4,7 +4,8 @@ import CatalogPage from "./pages/CatalogPage/CatalogPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import OpenAnAccount from "./pages/OpenAnAccount/OpenAnAccount";
-import JobOpportunities from "./pages/JobOpportunities/JobOpportunities";
+import CareerPage from "./pages/CareerPage/CareerPage";
+import DetailCareerPage from "./pages/CareerPage/DetailCareerPage";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Route path="/catalog" element={<CatalogPage />} />
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/contact" element={<ContactUsPage />} />
-      <Route path="/careers" element={<JobOpportunities />} />
+      <Route path="/careers" element={<CareerPage />} />
+      <Route path="/careers/:jobSlug" element={<DetailCareerPage />} />
       <Route path="/account" element={<OpenAnAccount />} />
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
