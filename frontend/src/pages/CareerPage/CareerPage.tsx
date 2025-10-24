@@ -153,7 +153,7 @@ const CareerPage = () => {
 
       {/* Hero Section */}
       <Box
-        bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+        bg="linear-gradient(135deg, #D35400 0%, #E67E22 50%, #F39C12 100%)"
         color="white"
         py={{ base: 16, md: 24 }}
         position="relative"

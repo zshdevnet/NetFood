@@ -28,13 +28,13 @@ const AboutUsPage = () => {
 
   const bgGradient =
     colorMode === "light"
-      ? "linear-gradient(135deg, #EBF8FF 0%, #F0FFF4 50%, #FFF5E6 100%)"
+      ? "linear-gradient(135deg, #FFF5E6 0%, #FFEBCC 50%, #FFE0B3 100%)"
       : "linear-gradient(135deg, #1A202C 0%, #2D3748 50%, #2C1810 100%)";
 
   const cardBg = colorMode === "light" ? "white" : "#2D3748";
   const textColor = colorMode === "light" ? "#4A5568" : "#E2E8F0";
   const headingColor = colorMode === "light" ? "#1A202C" : "#F7FAFC";
-  const accentColor = "#3E9A42";
+  const accentColor = "#D35400";
 
   return (
     <Box
@@ -166,17 +166,13 @@ const AboutUsPage = () => {
                 left={0}
                 right={0}
                 h="4px"
-                background="linear-gradient(to right, #3E9A42, #4CAF50, #66BB6A)"
+                background="#E55100"
               />
 
               <VStack gap={6} align="start">
                 <HStack gap={4}>
-                  <Circle
-                    size="60px"
-                    bg="green.100"
-                    _dark={{ bg: "green.900" }}
-                  >
-                    <Icon as={FiTrendingUp} w={6} h={6} color={accentColor} />
+                  <Circle size="60px" bg="#E55100" _dark={{ bg: "#E55100" }}>
+                    <Icon as={FiTrendingUp} w={6} h={6} color="white" />
                   </Circle>
                   <VStack align="start" gap={1}>
                     <Text
@@ -233,17 +229,13 @@ const AboutUsPage = () => {
                 left={0}
                 right={0}
                 h="4px"
-                background="linear-gradient(to right, #D35400, #FF6B35, #FF8E53)"
+                background="#E55100"
               />
 
               <VStack gap={6} align="start">
                 <HStack gap={4}>
-                  <Circle
-                    size="60px"
-                    bg="orange.100"
-                    _dark={{ bg: "orange.900" }}
-                  >
-                    <Icon as={FiTarget} w={6} h={6} color="#D35400" />
+                  <Circle size="60px" bg="#E55100" _dark={{ bg: "#E55100" }}>
+                    <Icon as={FiTarget} w={6} h={6} color="white" />
                   </Circle>
                   <VStack align="start" gap={1}>
                     <Text
@@ -301,13 +293,13 @@ const AboutUsPage = () => {
                 left={0}
                 right={0}
                 h="4px"
-                background="linear-gradient(to right, #2196F3, #21CBF3, #40E0D0)"
+                background="#E55100"
               />
 
               <VStack gap={6} align="start">
                 <HStack gap={4}>
-                  <Circle size="60px" bg="blue.100" _dark={{ bg: "blue.900" }}>
-                    <Icon as={FiUsers} w={6} h={6} color="#2196F3" />
+                  <Circle size="60px" bg="#E55100" _dark={{ bg: "#E55100" }}>
+                    <Icon as={FiUsers} w={6} h={6} color="white" />
                   </Circle>
                   <VStack align="start" gap={1}>
                     <Text
@@ -318,7 +310,7 @@ const AboutUsPage = () => {
                     >
                       Our Team
                     </Text>
-                    <Text fontSize="sm" color="#2196F3" fontWeight="medium">
+                    <Text fontSize="sm" color="#D35400" fontWeight="medium">
                       Dedicated Professionals
                     </Text>
                   </VStack>
@@ -412,17 +404,17 @@ const AboutUsPage = () => {
                 _hover={{
                   transform: "translateY(-4px)",
                   boxShadow: "2xl",
-                  borderColor: accentColor,
+                  borderColor: "#D35400",
                 }}
               >
                 <Circle
                   size="60px"
-                  bg="green.100"
-                  _dark={{ bg: "green.900" }}
+                  bg="#E55100"
+                  _dark={{ bg: "#E55100" }}
                   mx="auto"
                   mb={4}
                 >
-                  <Icon as={value.icon} w={6} h={6} color={accentColor} />
+                  <Icon as={value.icon} w={6} h={6} color="white" />
                 </Circle>
                 <Text
                   fontSize="xl"
