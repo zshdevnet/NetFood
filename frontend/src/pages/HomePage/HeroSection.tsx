@@ -21,6 +21,11 @@ const HeroSection = () => {
   const [touchEnd, setTouchEnd] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Mouse drag states for desktop
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragEnd, setDragEnd] = useState(0);
+
   // New state for API data
   const [slides, setSlides] = useState<HeroSlider[]>([]);
   const [loading, setLoading] = useState(true);
@@ -178,6 +183,48 @@ const HeroSection = () => {
     setTouchEnd(0);
   };
 
+  // Mouse drag navigation for desktop
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setDragStart(e.clientX);
+    setDragEnd(0);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setDragEnd(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging || !dragStart || !dragEnd) {
+      setIsDragging(false);
+      return;
+    }
+
+    const distance = dragStart - dragEnd;
+    const isLeftDrag = distance > 50; // Drag left = next slide
+    const isRightDrag = distance < -50; // Drag right = previous slide
+
+    if (isLeftDrag) {
+      nextSlide();
+    } else if (isRightDrag) {
+      prevSlide();
+    }
+
+    // Reset drag values
+    setIsDragging(false);
+    setDragStart(0);
+    setDragEnd(0);
+  };
+
+  const handleMouseLeave = () => {
+    // Reset drag state when mouse leaves the slider
+    setIsDragging(false);
+    setDragStart(0);
+    setDragEnd(0);
+    setIsHovered(false);
+  };
+
   // Loading state
   if (loading) {
     return (
@@ -265,17 +312,20 @@ const HeroSection = () => {
         h={{ base: "400px", md: "500px", lg: "600px" }}
         borderRadius="xl"
         overflow="hidden"
-        bgImage={backgroundGradients[currentSlide % backgroundGradients.length]}
+        bg="gray.100"
+        _dark={{ bg: "gray.800" }}
         mx={{ base: 4, md: 0 }}
         boxShadow="xl"
         onWheel={handleWheel}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        cursor="grab"
-        _active={{ cursor: "grabbing" }}
+        onMouseLeave={handleMouseLeave}
+        cursor={isDragging ? "grabbing" : "grab"}
         _hover={{ boxShadow: "2xl" }}
         userSelect="none"
         css={{
@@ -292,6 +342,8 @@ const HeroSection = () => {
           bgImage="radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 1px, transparent 1px)"
           bgSize="30px 30px"
           opacity={0.3}
+          zIndex={10}
+          pointerEvents="none"
         />
 
         {/* Organic Pattern Overlay */}
@@ -303,6 +355,8 @@ const HeroSection = () => {
           h="100%"
           bgImage="repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 20px)"
           opacity={0.15}
+          zIndex={10}
+          pointerEvents="none"
         />
 
         {slides.map((slide, index) => (
@@ -313,11 +367,13 @@ const HeroSection = () => {
             left={0}
             w="100%"
             h="100%"
+            background={backgroundGradients[index % backgroundGradients.length]}
             opacity={index === currentSlide ? 1 : 0}
             transform={
               index === currentSlide ? "translateX(0)" : "translateX(20px)"
             }
             transition="all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
+            zIndex={index === currentSlide ? 2 : 1}
             display="flex"
             alignItems="center"
           >
@@ -387,8 +443,9 @@ const HeroSection = () => {
                     objectFit="contain"
                     filter="drop-shadow(0 10px 20px rgba(0,0,0,0.3))"
                     transform="scale(1)"
-                    transition="transform 0.3s ease"
+                    transition="all 0.5s ease"
                     _hover={{ transform: "scale(1.05)" }}
+                    loading="lazy"
                   />
                 </Box>
               </Box>
