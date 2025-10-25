@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.utils import timezone
 from rest_framework import generics, status, filters
@@ -6,6 +7,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import permissions
+from rest_framework.exceptions import PermissionDenied
 
 from .models import HeroSlider
 from .serializers import (

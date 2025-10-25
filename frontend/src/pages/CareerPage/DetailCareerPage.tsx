@@ -381,7 +381,7 @@ const DetailCareerPage = () => {
               Fill out the form below and our team will get back to you within
               24 hours.
             </Text>
-            <form onSubmit={handleFormSubmit}>
+            <form id="career-form" onSubmit={handleFormSubmit}>
               <VStack gap={6} align="stretch">
                 <Box>
                   <Text mb={2} fontSize="sm" fontWeight="500" color={subText}>

@@ -1,5 +1,5 @@
 // API service for NetFood backend
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export interface HeroSlider {
   id: number;
@@ -26,7 +26,12 @@ export const apiService = {
   // Get all hero sliders
   getHeroSliders: async (): Promise<ApiResponse<HeroSlider>> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/sliders/`);
+      const response = await fetch(`${API_BASE_URL}/sliders/`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,7 +48,11 @@ export const apiService = {
   // Get single hero slider by ID
   getHeroSlider: async (id: number): Promise<{ success: boolean; data: HeroSlider; timestamp: string }> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/sliders/${id}/`);
+      const response = await fetch(`${API_BASE_URL}/sliders/${id}/`, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -60,7 +69,11 @@ export const apiService = {
   // Health check
   healthCheck: async (): Promise<any> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/health/`);
+      const response = await fetch(`${API_BASE_URL}/health/`, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
