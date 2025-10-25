@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv(os.path.join(Path(__file__).resolve().parent.parent, '.env'))
+load_dotenv(os.path.join(Path(__file__).resolve().parent.parent, ".env"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,12 +14,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "unsafe-default-key")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
-
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,0.0.0.0").split(",")
+DEBUG = bool(int(os.getenv("DJANGO_DEBUG")))
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
 
 # Application definition
@@ -80,11 +79,7 @@ WSGI_APPLICATION = "netfood.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("DJANGO_DB_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.getenv("DJANGO_DB_NAME", BASE_DIR / "db.sqlite3"),
-        "USER": os.getenv("DJANGO_DB_USER", ""),
-        "PASSWORD": os.getenv("DJANGO_DB_PASSWORD", ""),
-        "HOST": os.getenv("DJANGO_DB_HOST", ""),
-        "PORT": os.getenv("DJANGO_DB_PORT", ""),
+        "NAME": os.getenv("DJANGO_DB_NAME"),
     }
 }
 
@@ -162,12 +157,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS Settings for Frontend Integration
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
 
 CORS_ALLOW_CREDENTIALS = True
 
